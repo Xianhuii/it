@@ -1,4 +1,10 @@
-# [Home](home.md)
+## [Home](/)
 
-1. [Home](home.md)
+## Java-SE
 
+- [hello-world](/it/java-se/hello-world/)
+- [hello-world](/it/java-se/hello-world/)
+
+## Spring-core
+
+- [作用域](/it/spring-core/Scope)

@@ -3,18 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 'HHHHHH~'
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: Xianhuii
+language: zh
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
-permalink: :year/:month/:day/:title/
+url: 'https://xianhuii.github.io/it'
+permalink: :category/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -31,7 +31,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :category/:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:
@@ -40,7 +40,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -66,8 +66,9 @@ index_generator:
   order_by: -date
 
 # Category & Tag
-default_category: uncategorized
+default_category: default
 category_map:
+  - java
 tag_map:
 
 # Metadata elements
@@ -99,7 +100,44 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: book
 
+markdown:
+  render:
+    html: true # Doesn't escape HTML content so the tags will appear as html.
+    xhtmlOut: false # Parser will not produce XHTML compliant code.
+    breaks: true # Parser produces `<br>` tags every time there is a line break in the source document.
+    linkify: true # Returns text links as text.
+    typographer: true # Substitution of common typographical elements will take place.
+    quotes: '“”‘’' # "double" will be turned into “single”
+                   # 'single' will be turned into ‘single’
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-container
+    - markdown-it-deflist
+    - markdown-it-emoji
+    - markdown-it-footnote
+    - markdown-it-imsize
+    - markdown-it-ins
+    - markdown-it-mark
+    - markdown-it-regexp
+    - markdown-it-sub
+    - markdown-it-sup
+    - markdown-it-checkbox
+  anchors:
+    # Minimum level for ID creation. (Ex. h2 to h6)
+    level: 1
+    # A suffix that is prepended to the number given if the ID is repeated.
+    collisionSuffix: 'v'
+    # If `true`, creates an anchor tag with a permalink besides the heading.
+    permalink: false
+    # Class used for the permalink anchor tag.
+    permalinkClass: header-anchor
+    # The symbol used to make the permalink
+    permalinkSymbol: '# '
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: 'git'
+  repo: 'https://github.com/Xianhuii/it'
+  token: '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'
+  message: "Site updated: ({{ now('YYYY-MM-DD HH:mm:ss') }})"
