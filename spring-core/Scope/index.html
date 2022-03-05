@@ -128,7 +128,7 @@ function sidebar_toggle() {
   <blockquote>
 <p>本文从原理上讲解Spring IoC容器的作用域机制，建议对着源码阅读。</p>
 </blockquote>
-<h1 id="0-引入问题">0 引入问题</h1>
+<h1 id="0-引入问题-v2">0 引入问题</h1>
 <p>当我们谈到Spring作用域的时候，自然而然会想到如下作用域（来自spring-core官方文档）：</p>
 <table>
 <thead>
@@ -186,11 +186,11 @@ function sidebar_toggle() {
 <li>内置作用域和自定义作用域的区别？</li>
 <li>如何自定义作用域？</li>
 </ol>
-<h1 id="1-什么是作用域？如何使用作用域？">1 什么是作用域？如何使用作用域？</h1>
-<h2 id="1-1-什么是作用域？">1.1 什么是作用域？</h2>
+<h1 id="1-什么是作用域？如何使用作用域？-v2">1 什么是作用域？如何使用作用域？</h1>
+<h2 id="1-1-什么是作用域？-v2">1.1 什么是作用域？</h2>
 <p>作用域是个很宽泛的概念，本文讨论的特指是Spring IoC容器中<code>Bean</code>对象的作用域，简单可以理解成：<code>bean</code>对象的存活范围。</p>
 <p>为了便于深入理解，我们先要大概了解一下Spring IoC容器的工作原理。Spring IoC容器的使用流程大概可以分为以下3个步骤：</p>
-<pre class="mermaid">flowchart LR
+<pre class="mermaid">flowchart LR; SPACE
     配置文件 --> 创建容器 --> 获取bean</pre>
 <ol>
 <li>
@@ -230,9 +230,9 @@ public A a() &#123;
 System.out.println(a);	&#x2F;&#x2F; com.xianhuii.spring.beanscopes.demo01.A@49070868
 a &#x3D; context.getBean(&quot;a&quot;, A.class);
 System.out.println(a);	&#x2F;&#x2F; com.xianhuii.spring.beanscopes.demo01.A@6385cb26<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="1-2-如何使用作用域？">1.2 如何使用作用域？</h2>
+<h2 id="1-2-如何使用作用域？-v2">1.2 如何使用作用域？</h2>
 <p>作用域的使用比较简单，只需要在配置<code>Bean</code>时使用指定作用域即可。我们使用作用域的重点其实在于不同作用域下<code>context.getBean()</code>的规则。</p>
-<h3 id="1-2-1-singleton">1.2.1 <code>singleton</code></h3>
+<h3 id="1-2-1-singleton-v2">1.2.1 <code>singleton</code></h3>
 <p><code>singleton</code>作用域下，多次调用<code>context.getBean()</code>方法获取到同一个对象。</p>
 <ul>
 <li>配置：</li>
@@ -254,7 +254,7 @@ System.out.println(a);	&#x2F;&#x2F; com.xianhuii.spring.beanscopes.demo01.A@6385
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// com.xianhuii.spring.beanscopes.demo01.A@16267862</span>
 a <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token class-name">A</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// com.xianhuii.spring.beanscopes.demo01.A@16267862</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="1-2-2-prototype">1.2.2 <code>prototype</code></h3>
+<h3 id="1-2-2-prototype-v2">1.2.2 <code>prototype</code></h3>
 <p><code>prototype</code>作用域下，每次调用<code>context.getBean()</code>方法获取到新对象。</p>
 <ul>
 <li>配置：</li>
@@ -277,7 +277,7 @@ a <span class="token operator">=</span> context<span class="token punctuation">.
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// com.xianhuii.spring.beanscopes.demo01.A@49070868</span>
 a <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token class-name">A</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// com.xianhuii.spring.beanscopes.demo01.A@6385cb26</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="2-作用域的底层原理？">2 作用域的底层原理？</h1>
+<h1 id="2-作用域的底层原理？-v2">2 作用域的底层原理？</h1>
 <p><strong><code>Bean</code>作用域本质上指的是多次调用<code>context.getBean()</code>方法获取到的是否是同一个<code>bean</code>对象。</strong></p>
 <p>所以，作用域底层执行原理在<code>context.getBean()</code>方法中，其中与作用域有关的执行流程如下：</p>
 <pre class="mermaid">flowchart TD
@@ -340,14 +340,14 @@ else &#123;
         throw new ScopeNotActiveException(beanName, scopeName, ex);
     &#125;
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-1-singleton作用域">2.1 <code>singleton</code>作用域</h2>
+<h2 id="2-1-singleton作用域-v2">2.1 <code>singleton</code>作用域</h2>
 <p><code>singleton</code>作用域<code>bean</code>对象的创建过程分为三个步骤：</p>
 <ol>
 <li>判断是否为<code>singleton</code>作用域。</li>
 <li>根据<code>singleton</code>规则创建<code>bean</code>对象。</li>
 <li>对<code>bean</code>对象进行后处理。</li>
 </ol>
-<h3 id="1、判断">1、判断</h3>
+<h3 id="1、判断-v3">1、判断</h3>
 <p><code>mbd.isSingleton()</code>方法（<code>org.springframework.beans.factory.support.AbstractBeanDefinition#isSingleton</code>）的源码如下：</p>
 <pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">public boolean isSingleton() &#123;
    return SCOPE_SINGLETON.equals(this.scope) || SCOPE_DEFAULT.equals(this.scope);
@@ -381,7 +381,7 @@ public static final String SCOPE_DEFAULT &#x3D; &quot;&quot;;<span aria-hidden="
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ol>
-<h3 id="2、创建单例bean">2、创建单例<code>bean</code></h3>
+<h3 id="2、创建单例bean-v2">2、创建单例<code>bean</code></h3>
 <p>创建单例<code>bean</code>的源码如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">sharedInstance <span class="token operator">=</span> <span class="token function">getSingleton</span><span class="token punctuation">(</span>beanName<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
    <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
@@ -468,7 +468,7 @@ public static final String SCOPE_DEFAULT &#x3D; &quot;&quot;;<span aria-hidden="
    <span class="token function">destroySingleton</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token keyword">throw</span> ex<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3、后处理">3、后处理</h3>
+<h3 id="3、后处理-v3">3、后处理</h3>
 <p><code>org.springframework.beans.factory.support.AbstractBeanFactory#getObjectForBeanInstance</code>方法会对上述根据<code>BeanDefinition</code>创建处理<code>bean</code>进行后处理，该方法其实就是Spring AOP功能的入口。其内部会进行如下判断：</p>
 <ol>
 <li>容器内部使用。</li>
@@ -505,14 +505,14 @@ public static final String SCOPE_DEFAULT &#x3D; &quot;&quot;;<span aria-hidden="
    <span class="token punctuation">&#125;</span>
    <span class="token keyword">return</span> object<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="2-2-prototype作用域">2.2 <code>prototype</code>作用域</h2>
+<h2 id="2-2-prototype作用域-v2">2.2 <code>prototype</code>作用域</h2>
 <p><code>prototype</code>作用域<code>bean</code>对象的创建过程分为三个步骤：</p>
 <ol>
 <li>判断是否为<code>prototype</code>作用域。</li>
 <li>根据<code>prototype</code>规则创建<code>bean</code>对象。</li>
 <li>对<code>prototype</code>对象进行后处理。</li>
 </ol>
-<h3 id="1、判断-v2">1、判断</h3>
+<h3 id="1、判断-v4">1、判断</h3>
 <p><code>mbd.isPrototype()</code>方法（<code>org.springframework.beans.factory.support.AbstractBeanDefinition#isPrototype</code>）的源码如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isPrototype</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
    <span class="token keyword">return</span> SCOPE_PROTOTYPE<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>scope<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -525,7 +525,7 @@ public static final String SCOPE_DEFAULT &#x3D; &quot;&quot;;<span aria-hidden="
 <span class="token keyword">public</span> <span class="token class-name">A</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2、创建原型bean">2、创建原型<code>bean</code></h3>
+<h3 id="2、创建原型bean-v2">2、创建原型<code>bean</code></h3>
 <p>有了以上经验，我们就能很容易理解创建原型<code>bean</code>的源码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Object</span> prototypeInstance <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
@@ -538,9 +538,9 @@ public static final String SCOPE_DEFAULT &#x3D; &quot;&quot;;<span aria-hidden="
    <span class="token comment">// 3、后处理，默认移除“创建中”标记</span>
    <span class="token function">afterPrototypeCreation</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3、后处理-v2">3、后处理</h3>
+<h3 id="3、后处理-v4">3、后处理</h3>
 <p>该后处理过程与<code>singleton</code>作用域完全相同。</p>
-<h2 id="2-3-自定义作用域">2.3 自定义作用域</h2>
+<h2 id="2-3-自定义作用域-v2">2.3 自定义作用域</h2>
 <p>如果<code>BeanDefinition</code>既不是<code>singleton</code>，也不是<code>prototype</code>，那么就会执行自定义作用域的创建规则：</p>
 <ol>
 <li>获取<code>BeanDefinition</code>的<code>scope</code>属性值。</li>
@@ -584,13 +584,13 @@ public static final String SCOPE_DEFAULT &#x3D; &quot;&quot;;<span aria-hidden="
 <p>配置<code>Bean</code>时，指定对应的作用域名。</p>
 </li>
 </ol>
-<h1 id="3-内置作用域和自定义作用域的区别？">3 内置作用域和自定义作用域的区别？</h1>
+<h1 id="3-内置作用域和自定义作用域的区别？-v2">3 内置作用域和自定义作用域的区别？</h1>
 <p>通过上述的讲解，想必大家对内置作用域（<code>singleton</code>和<code>prototype</code>）和自定义作用域的区别有了本质上的理解。</p>
 <p>内置作用域的作用域名和<code>bean</code>创建规则已经写死到Spring IoC容器中。</p>
 <p>自定义作用域通过自定义的作用域名从<code>BeanFactory</code>的<code>scopes</code>缓存中找到自定义作用域实现类，根据其中实现的<code>get()</code>方法创建<code>bean</code>。同时，自定义作用域的<code>bean</code>对象存放于自定义的缓存中。</p>
-<h1 id="4-自定义作用域案例：request">4 自定义作用域案例：<code>request</code></h1>
+<h1 id="4-自定义作用域案例：request-v2">4 自定义作用域案例：<code>request</code></h1>
 <p>接下来，我们以<code>request</code>作用域为例，展示如何自定义作用域。</p>
-<h2 id="4-1-RequestScope实现类">4.1 <code>RequestScope</code>实现类</h2>
+<h2 id="4-1-RequestScope实现类-v2">4.1 <code>RequestScope</code>实现类</h2>
 <p>该实现类全限定类名为<code>org.springframework.web.context.request.RequestScope</code>。类图如下：</p>
 <pre class="mermaid">classDiagram
 class Scope
@@ -635,7 +635,7 @@ AbstractRequestAttributesScope <|-- RequestScope</pre>
    <span class="token comment">// 4、如果缓存中存在，直接返回</span>
    <span class="token keyword">return</span> scopedObject<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="4-2-注册作用域">4.2 注册作用域</h2>
+<h2 id="4-2-注册作用域-v2">4.2 注册作用域</h2>
 <p>在实现Web功能的容器（如<code>org.springframework.web.context.support.GenericWebApplicationContext</code>接口）中，会自动将<code>request</code>等自定义作用域注册到<code>BeanFactory</code>的<code>scopes</code>缓存中：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span><span class="token class-name">ConfigurableListableBeanFactory</span> beanFactory<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>servletContext <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -669,7 +669,7 @@ AbstractRequestAttributesScope <|-- RequestScope</pre>
       <span class="token class-name">FacesDependencyRegistrar</span><span class="token punctuation">.</span><span class="token function">registerFacesDependencies</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="4-3-配置Bean">4.3 配置<code>Bean</code></h2>
+<h2 id="4-3-配置Bean-v2">4.3 配置<code>Bean</code></h2>
 <p>在定义<code>Bean</code>时，通过指定作用域为<code>request</code>即可：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
 <span class="token annotation punctuation">@Scope</span><span class="token punctuation">(</span><span class="token string">"request"</span><span class="token punctuation">)</span>
@@ -697,13 +697,13 @@ AbstractRequestAttributesScope <|-- RequestScope</pre>
    <span class="token class-name">ScopedProxyMode</span> <span class="token function">proxyMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token class-name">ScopedProxyMode</span><span class="token punctuation">.</span>TARGET_CLASS<span class="token punctuation">;</span>
 
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="5-自定义作用域实战">5 自定义作用域实战</h1>
+<h1 id="5-自定义作用域实战-v2">5 自定义作用域实战</h1>
 <p>在文章的最后，我们通过实战来自定义作用域<code>myScope</code>，用来简单模拟<code>singleton</code>作用域：</p>
 <ol>
 <li>第一次调用<code>context.getBean()</code>方法时创建新<code>bean</code>。</li>
 <li>之后每次调用<code>context.getBean()</code>方法都会获取同一个<code>bean</code>。</li>
 </ol>
-<h2 id="5-1-MyScope实现类">5.1 <code>MyScope</code>实现类</h2>
+<h2 id="5-1-MyScope实现类-v2">5.1 <code>MyScope</code>实现类</h2>
 <p>该实现类核心在于<code>get()</code>方法，其他方法都使用默认实现，因此省略：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyScope</span> <span class="token keyword">implements</span> <span class="token class-name">Scope</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">// bean缓存</span>
@@ -724,7 +724,7 @@ AbstractRequestAttributesScope <|-- RequestScope</pre>
         <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="5-2-注册作用域">5.2 注册作用域</h2>
+<h2 id="5-2-注册作用域-v2">5.2 注册作用域</h2>
 <p>注册作用域的方法定义为<code>org.springframework.beans.factory.config.ConfigurableBeanFactory#registerScope</code>：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppConfiguration</span> <span class="token keyword">implements</span> <span class="token class-name">BeanFactoryAware</span> <span class="token punctuation">&#123;</span>
@@ -744,13 +744,13 @@ AbstractRequestAttributesScope <|-- RequestScope</pre>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="5-3-配置Bean">5.3 配置<code>Bean</code></h2>
+<h2 id="5-3-配置Bean-v2">5.3 配置<code>Bean</code></h2>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
 <span class="token annotation punctuation">@Scope</span><span class="token punctuation">(</span><span class="token string">"myScope"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token class-name">A</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="5-4-测试">5.4 测试</h2>
+<h2 id="5-4-测试-v2">5.4 测试</h2>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Application</span> <span class="token keyword">implements</span> <span class="token class-name">ApplicationContextAware</span> <span class="token punctuation">&#123;</span>
 
@@ -811,7 +811,13 @@ key: a, value: com.xianhuii.springboot.demo.A@757194dc<span aria-hidden="true" c
   <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
   <script>
     if (window.mermaid) {
-      mermaid.initialize({theme: 'forest'});
+      mermaid.initialize({
+        mermaid: {
+          // startOnLoad: false,
+          theme: 'neutral'
+        }
+      }
+      );
     }
   </script>
 
