@@ -11,7 +11,7 @@
 
     <title>
         
-          HHHHHH~
+          download-jdk - HHHHHH~
         
     </title>
 
@@ -128,35 +128,75 @@ function sidebar_toggle() {
 
         </div>
         <div class="book-content">
-          <div class='book-archive'>
-  <!-- Title -->
-  
-    <h1>Tag - spring</h1>
-  
+          <div class="book-post">
+  <p>使用Java之前，第一步要为电脑安装JDK。</p>
+<p>JDK全称Java Development Kit，即Java开发工具包。</p>
+<p>JDK的下载途径有很多，最权威的当然是Oracle官网：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/archive/">Java Archive | Oracle</a></p>
+<p>我们可以根据自己的需要选择不同的<code>版本</code>和<code>系统</code>进行下载：</p>
+<p><img src="download-jdk/image-20220307210348975.png" alt="image-20220307210348975"></p>
+<p>由于官网下载速度比较慢，在此分享几个主要版本的天翼云盘给大家：</p>
+<h1 id="Windows">Windows</h1>
+<h2 id="1-安装">1 安装</h2>
+<h3 id="zip压缩文件"><code>zip</code>压缩文件</h3>
+<p>对于<code>zip</code>压缩文件，直接解压缩到任意安装目录（例如：<code>D:\Environment\jdk-11.0.13</code>）：</p>
+<p><img src="download-jdk/image-20220307212630950.png" alt="image-20220307212630950"></p>
+<h3 id="exe可执行文件"><code>exe</code>可执行文件</h3>
+<ol>
+<li>
+<p>双击<code>exe</code>文件，点击<code>下一步</code>：</p>
+<p><img src="download-jdk/image-20220307215303189.png" alt="image-20220307215303189"></p>
+</li>
+<li>
+<p>点击<code>更改</code>，选择任意安装目录（例如：<code>D:\download\jdk-8</code>）：</p>
+<p><img src="download-jdk/image-20220307215456243.png" alt="image-20220307215456243"></p>
+</li>
+<li>
+<p>点击<code>下一步</code>，开始安装：</p>
+<p><img src="download-jdk/image-20220307215641490.png" alt="image-20220307215641490"></p>
+</li>
+<li>
+<p>安装完成后，会提示安装<code>jre</code>。由于<code>jdk</code>自带<code>jre</code>，所以我们在这里点<code>x</code>关闭：</p>
+<p><img src="download-jdk/image-20220307215726930.png" alt="image-20220307215726930"></p>
+</li>
+<li>
+<p>安装完成后，点击<code>关闭</code>：</p>
+<p><img src="download-jdk/image-20220307215849725.png" alt="image-20220307215849725"></p>
+</li>
+</ol>
+<h2 id="2-设置环境变量">2 设置环境变量</h2>
+<p>将安装目录下<code>/bin/</code>目录（例如：<code>D:\Environment\jdk-11.0.13\bin</code>）设置成<code>path</code>环境变量的值：</p>
+<p><img src="download-jdk/image-20220307213226625.png" alt="image-20220307213226625"></p>
+<h2 id="3-验证">3 验证</h2>
+<ol>
+<li>
+<p>通过<code>Win</code>+<code>R</code>，打开运行窗口：</p>
+<p><img src="download-jdk/image-20220307213657389.png" alt="image-20220307213657389"></p>
+</li>
+<li>
+<p>在命令行里输入<code>java -version</code>，如果出现Java版本信息，说明安装成功：</p>
+<p><img src="download-jdk/image-20220307213648891.png" alt="image-20220307213648891"></p>
+</li>
+</ol>
+<p>说明：如果在电脑中同时安装多个版本的JDK，默认首先会使用<code>path</code>环境变量中位置靠前的版本。</p>
+<h1 id="Linux（待定）">Linux（待定）</h1>
+<h1 id="macOS（待定）">macOS（待定）</h1>
 
-  
-    <!-- Split post by year -->
-    
-  
-
-  
-      <div class="years">
-          <h2>2022</h2>
-          <ul class="archive-list-item">
-          
-              <li>
-                <span>2022-03-05</span>
-                <a href="/it/spring-core/Scope/">
-                  作用域
-                </a>
-              </li>
-          
-          </ul>
-      </div>
-  
-
-  
 </div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/it/js/book-post.js"></script>
+
+
         </div>
       </div>
       <div class="column col-2 hide-lg">
@@ -180,10 +220,19 @@ function sidebar_toggle() {
     <!-- Author title -->
     <div class="author-title">
       <div>Xianhuii</div>
-      <div></div>
+      <div>2022-03-07</div>
     </div>
   </div>
 
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/it/categories/java-se/">java-se</a>
+
+      <a class="tag-none-link" href="/it/tags/java/" rel="tag">#java</a>
+    </div>
+    
   
 
   <div class="divider"></div>
