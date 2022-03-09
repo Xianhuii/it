@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/it/favicon.png" />
+    
+
+    <title>
+        
+          first-program - HHHHHH~
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/it/css/book.css">
+
+    
+<script src="/it/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/it/">
+    <img src="/it/favicon.png">
+    <span>HHHHHH~</span>
+  </a>
+</div>
+    <div id="menu" class="book-menu hide">
+  <h2 id="Home"><a href="/it/">Home</a></h2>
+<h2 id="Java-SE">Java-SE</h2>
+<ul>
+<li><a href="/it/java-se/download-jdk/">下载jdk</a></li>
+<li><a href="/it/java-se/first-application/">第一个Java应用</a></li>
+</ul>
+<h2 id="Spring-core">Spring-core</h2>
+<ul>
+<li><a href="/it/spring-core/Scope">作用域</a></li>
+</ul>
+
+</div>
+
+
+<script src="/it/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <p>在本篇文章中，我们以两个最简单的Java程序为例，来学习Java开发基本流程。</p>
+<h1 id="单Class程序">单Class程序</h1>
+<p>我们首先来编写第一个Java程序，这个程序十分简单，只需要编写一个<code>.java</code>文件。</p>
+<ol>
+<li>
+<p>在任意位置（例如：<code>C:\Users\Administrator\Desktop</code>）新建一个名为<code>SingleClassApp.java</code>的文件：</p>
+<p><img src="/it/java-se/first-application/image-20220308212542174.png" alt></p>
+</li>
+<li>
+<p>出现以下弹窗时，直接点<code>是</code>：</p>
+<p><img src="/it/java-se/first-application/image-20220308212340927.png" alt></p>
+</li>
+<li>
+<p>双击用记事本打开文件，输入以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleClassApp</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>点击<code>Win</code>+<code>R</code>，输入<code>cmd</code>，打开命令行窗口：</p>
+<p><img src="/it/java-se/first-application/image-20220308213038069.png" alt></p>
+</li>
+<li>
+<p>在命令行窗口输入以下命令，切换当前目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\Users\Administrator\Desktop</span><br></pre></td></tr></table></figure>
+<p><img src="/it/java-se/first-application/image-20220308213533790.png" alt></p>
+</li>
+<li>
+<p>在命令行输入以下命令，编译<code>.java</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac SingleClassApp.java</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>此时会发现在当前目录下会新建一个<code>SingleClassApp.class</code>文件：</p>
+<p><img src="/it/java-se/first-application/image-20220308213728668.png" alt></p>
+</li>
+<li>
+<p>在命令行输入以下命令，执行<code>.class</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java SingleClassApp</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>此时在命令行会打印出下面这句话：</p>
+<p><img src="/it/java-se/first-application/image-20220308213946994.png" alt></p>
+</li>
+</ol>
+<h1 id="多Class程序">多Class程序</h1>
+<p>接下来，我们来编写第二个程序。</p>
+<p>该程序由两个文件组成，<code>BootStrap.java</code>调用<code>Service.java</code>提供的服务完成业务逻辑。</p>
+<ol>
+<li>
+<p>在任意目录下（例如：<code>C:\Users\Administrator\Desktop</code>）新建<code>Service.java</code>文件，输入如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">helloWorld</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;hello world!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在同一目录下新建<code>BootStrap.java</code>文件，输入如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BootStrap</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    Service.helloWorld();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>点击<code>Win</code>+<code>R</code>，输入<code>cmd</code>，打开命令行窗口：</p>
+<p><img src="/it/java-se/first-application/image-20220308213038069.png" alt></p>
+</li>
+<li>
+<p>在命令行窗口输入以下命令，切换当前目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> C:\Users\Administrator\Desktop</span><br></pre></td></tr></table></figure>
+<p><img src="/it/java-se/first-application/image-20220308213533790.png" alt></p>
+</li>
+<li>
+<p>在命令行输入以下命令，编译<code>.java</code>文件（需要注意，<code>Service.java</code>文件在前面）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac Service.java BootStrap.java</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>此时会发现在当前目录下会新建<code>Service.class</code>和<code>BootStrap.class</code>文件。</p>
+</li>
+<li>
+<p>在命令行输入以下命令，执行<code>.class</code>文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java BootStrap</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>此时在命令行会打印出下面这句话：</p>
+<p><img src="/it/java-se/first-application/image-20220308221346519.png" alt></p>
+</li>
+</ol>
+<h1 id="说明">说明</h1>
+<h2 id="1-开发流程">1. 开发流程</h2>
+<p>以上是Java开发过程中的一个完整流程，总的来说可以分为以下几个步骤：</p>
+<ol>
+<li>新建<code>Xxx.java</code>文件。</li>
+<li>编写代码。</li>
+<li>使用<code>javac</code>命令编译。</li>
+<li>使用<code>java</code>命令执行。</li>
+</ol>
+<p>随着后续<code>IntelliJ IDEA</code>等开发工具的使用，我们会发现<code>3、4</code>步都由工具帮我们完成。我们可以专注于<code>编写代码</code>。</p>
+<h2 id="2-编译-执行">2. 编译&amp;执行</h2>
+<p>运行Java代码，需要经过<code>编译</code>和<code>执行</code>两个步骤：</p>
+<ul>
+<li><code>javac</code>命令（编译）：将<code>.java</code>文件编译成<code>.class</code>文件。</li>
+<li><code>java</code>命令（执行）：Java虚拟机根据<code>.class</code>文件执行程序。</li>
+</ul>
+<p>需要注意：<code>编译</code>多个<code>.java</code>文件时，需要先编译没有引用其他<code>.java</code>文件的文件。<code>执行</code>时，仅需要调用包含<code>main()</code>方法的<code>.class</code>文件即可。</p>
+<h2 id="3-main-方法">3. <code>main()</code>方法</h2>
+<p><code>main()</code>方法是所有Java程序的入口，电脑会在<code>main()</code>方法中从头至尾地执行代码。</p>
+<p>一个Java程序可能有多个<code>main()</code>方法，但是执行程序时只能选择其中一个<code>main()</code>方法作为入口。</p>
+<p>通常来说，一个Java程序也只会编写一个<code>main()</code>方法。在遇到复杂项目的时候，我们可以尝试寻找它的<code>main()</code>方法，从头梳理业务逻辑。</p>
+<p>许多框架会对通用流程进行封装，因此我们可能在程序执行的中间阶段进行编写业务代码。</p>
+<p>但是我们因该牢记：<code>main()</code>方法是Java程序的入口。</p>
+<h2 id="4-多个-java文件相互调用">4. 多个<code>.java</code>文件相互调用</h2>
+<p>在实际项目中，我们不可能在单个<code>.java</code>文件中编写所有业务逻辑（例如第一个例子）。</p>
+<p>而是通过多个<code>.java</code>文件相互调用来对业务进行模块划分，便于开发和维护。多个<code>.java</code>可以通过各种依赖注入方式来进行调用，其实本质上和第二个例子没有任何区别。</p>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/it/js/book-post.js"></script>
+
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="X"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>Xianhuii</div>
+      <div>2022-03-08</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/it/categories/java-se/">java-se</a>
+
+      <a class="tag-none-link" href="/it/tags/java/" rel="tag">#java</a>
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/it/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/it/js/book.js"></script>
